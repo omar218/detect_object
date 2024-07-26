@@ -1,0 +1,56 @@
+body {
+  background-color: #282c34;
+}
+
+.App {
+  text-align: center;
+  background-color: #282c34;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.group-button {
+  margin-top: 16px;
+  display: flex;
+  gap: 4px;
+}
+
+.btn {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  opacity: 0.75;
+}
+
+.btn:hover {
+  opacity: 1
+}
+
+.btn.btn-primary {
+  background-color: rgb(17, 98, 130);
+}
+
+.btn.btn-secondary {
+  background-color: rgb(89, 115, 126);
+}
+
+.preview-img {
+  width: 40rem;
+  border: 5px solid rgb(89, 115, 126);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.preview-img img {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,62 @@
+.drop-zone {
+    display: flex;
+    width: 40rem;
+    height: 25rem;
+    border: 2px dashed #ffffff4a;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.upload-btn {
+    position: relative;
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.inputfile {
+    border-radius: 50px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.view {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.view img {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    z-index: 1;
+}
+
+.view:after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    content: "";
+    background-color: white;
+    top: 0;
+    left: 0;
+    opacity: 1;
+}
+
+.inputfile:focus+.view:after,
+.inputfile:hover+.view:after {
+    opacity: 0.2;
+}
