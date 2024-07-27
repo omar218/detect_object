@@ -19,8 +19,10 @@ project aimed at detecting objects in images or videos (CI/CD - DEVSCOP)
 ```bash
 detect-object/
 ├── detect-object-api/
+│   ├── README.md
 │   └── ...
 ├── detect-object-frontend/
+│   ├── README.md
 │   └── ...
 ```
 
