@@ -5,6 +5,7 @@ WORKDIR /app
 
 COPY ./requirements.txt .
 COPY ./setup.sh .
+COPY ./config.py .
 COPY ./app.py .
 
 # permet de dénir où le conteneur sera accéssible par défaut

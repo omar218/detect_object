@@ -2,98 +2,84 @@ import React, { useCallback, useState } from "react";
 import "./App.css";
 import UploadData from "./components/uploadData";
 import { API_HOST, API_PORT } from "./config";
+import BlockCmp from "./components/block";
 
 function App() {
   const [imgProvided, setImgProvided] = useState<File | null>(null);
-  const [imgDetected, setImgDetected] = useState<File | null>(null);
+  const [blocks, setBlocks] = useState<Array<any>>([]);
+  const [loading, setLoading] = useState(false);
+
   const imgProvidedUrl = imgProvided
     ? URL.createObjectURL(imgProvided)
     : undefined;
-  const imgDetectedUrl = imgDetected
-    ? URL.createObjectURL(imgDetected)
-    : undefined;
 
   const handleChange = useCallback(() => {
-    setImgProvided(null);
-  }, []);
+    if (!loading) {
+      setBlocks([]);
+      setImgProvided(null);
+    }
+  }, [loading]);
 
   const handleDetect = useCallback(async () => {
-    console.log("detect image");
+    if (!loading) {
+      setLoading(true);
+      if (imgProvided) {
+        const formdata = new FormData();
+        formdata.append("file", imgProvided, "road.jpeg");
 
-    if (imgProvided) {
-      const formdata = new FormData();
-      formdata.append("file", imgProvided, "road.jpeg");
+        const requestOptions = {
+          method: "POST",
+          body: formdata,
+        };
 
-      const requestOptions = {
-        method: "POST",
-        body: formdata,
-      };
-
-      await fetch(`http://${API_HOST}:${API_PORT}/detect/`, requestOptions)
-        .then((response) => {
-          if (response.status === 200) {
-            return response.blob();
-          }
-          throw new Error("Un problème s'est produit lors de la détection");
-        })
-        .then((result) => {
-          if (result) {
-            setImgDetected(
-              new File([result], "detect_image.png", {
-                type: result.type,
-                lastModified: new Date().getTime(),
-              })
-            );
-          } else {
-            throw new Error("Aucune image n'a été fourni");
-          }
-          console.log(result);
-        })
-        .catch((error) => console.error(error));
-
-      await fetch(
-        `http://${API_HOST}:${API_PORT}/detect/block/`,
-        requestOptions
-      )
-        .then((response) => {
-          if (response.status === 200) {
-            return response.json();
-          }
-          throw new Error("Un problème s'est produit lors de la détection");
-        })
-        .then((result) => {
-          console.log(result);
-        })
-        .catch((error) => console.error(error));
-    } else {
-      alert("Aucune image fourni");
+        await fetch(`http://${API_HOST}:${API_PORT}/detect/`, requestOptions)
+          .then((response) => {
+            if (response.status === 200) {
+              return response.json();
+            }
+            throw new Error("Detecting isn't a success");
+          })
+          .then((result) => {
+            const data: Array<any> = result;
+            setBlocks(data);
+          })
+          .catch((error) => console.error(error));
+      } else {
+        alert("Image not provide");
+      }
+      setLoading(false);
     }
-  }, [imgProvided]);
+  }, [imgProvided, loading]);
 
   return (
     <div className="App">
       {(() => {
-        if (imgProvided) {
+        if (imgProvidedUrl) {
           return (
             <>
-              <div className="preview-img">
-                <img src={imgProvidedUrl} alt="" />
+              <div className="viewer-detect">
+                <div className="preview-img">
+                  <img src={imgProvidedUrl} className="img" alt="" />
+                  {blocks.map((block, i) => {
+                    return <BlockCmp key={`block-${i}`} block={block} />;
+                  })}
+                </div>
               </div>
 
-              {imgDetectedUrl ? (
-                <div className="preview-img">
-                  <img src={imgDetectedUrl} alt="" />
-                </div>
-              ) : (
-                <></>
-              )}
-
               <div className="group-button">
-                <button className="btn btn-secondary" onClick={handleChange}>
+                <button
+                  className="btn btn-secondary"
+                  disabled={loading}
+                  onClick={handleChange}
+                >
                   Change
                 </button>
-                <button className="btn btn-primary" onClick={handleDetect}>
-                  Detecter
+                <button
+                  className="btn btn-primary"
+                  disabled={loading}
+                  onClick={handleDetect}
+                >
+                  Detect
                 </button>
               </div>
             </>

@@ -77,7 +77,12 @@ const UploadData: React.FC<Props> = ({ handleDataProvided }) => {
     >
       <span>Drag and Drop your image</span>
       <div className="upload-btn">
-        <input className="inputfile" type="file" onChange={handleUpload} />
+        <input
+          className="inputfile"
+          type="file"
+          accept=".jpg, .jpeg, .png"
+          onChange={handleUpload}
+        />
         <div className="view">
           <img src={upload} alt="upload" />
         </div>

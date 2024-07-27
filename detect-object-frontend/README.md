@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+# Detect Object Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Detect Object Frontend is a React application built with TypeScript ([Create React App](https://github.com/facebook/create-react-app)) for detecting objects in images or videos. This frontend interacts with the Detect Object API to process files and display the results.
 
-## Available Scripts
+## Requirements
 
-In the project directory, you can run:
+- Node.js
+- yarn
 
-### `yarn start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Install the required packages:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+yarn add
+```
 
-### `yarn test`
+## Usage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Specify environements variables
 
-### `yarn build`
+    We have :
+    - `REACT_APP_API_HOST` : host of API
+    - `REACT_APP_API_PORT` :  port of API
+    - `REACT_APP_API_NOT_SECURE` : must use if a API is accessible by http
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    You must do it by a env file `.env`, you can view a example in `example.env`:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ```properties
+    REACT_APP_API_HOST="127.0.0.1"
+    REACT_APP_API_PORT="8000"
+    REACT_APP_API_NOT_SECURE=
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Start the development server:
 
-### `yarn eject`
+    ```bash
+    yarn start
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. Open your browser and navigate to `http://localhost:3000` to use the application.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+    - `Home page`
+        ![Home page image](./img/home.png)
+    - `Detect page`
+        ![page detection](./img/detect.png)

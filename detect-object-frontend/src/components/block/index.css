@@ -1,0 +1,18 @@
+.block {
+    display: block;
+    position: absolute;
+    border: 3px dashed rgb(31, 116, 18);
+    font-size: 16px;
+    z-index: 2;
+}
+
+.block .label {
+    display: block;
+    position: absolute;
+    top: -14px;
+    left: 1%;
+    padding: 1px 3px;
+    background-color: rgb(31, 116, 18);
+    color: white;
+    z-index: 10;
+}
