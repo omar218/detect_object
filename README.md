@@ -4,7 +4,7 @@ project aimed at detecting objects in images or videos (CI/CD - DEVSCOP)
 
 ## Features
 
-- **Backend**: FastAPI-based API for object detection using YOLOv3.
+- **API**: FastAPI-based API for object detection using YOLOv3.
 - **Frontend**: React application for uploading files and displaying the results.
 - **Object Detection**: Detect objects in images or videos and return the processed files with bounding boxes.
 
