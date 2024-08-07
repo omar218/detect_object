@@ -1,23 +1,21 @@
 services:
   frontend:
-    image: terra1313/detector:frontend-v1
-    container_name: frontend
+    image: detect_frontend
     ports:
-      - "3000:80"
+      - "8050:80"
     environment:
-      - REACT_APP_API_HOST=backend
-      - REACT_APP_API_PORT=8000
+      - REACT_APP_API_HOST=${HOST:-localhost}
+      - REACT_APP_API_PORT=8051
       - REACT_APP_API_NOT_SECURE=true
     depends_on:
       - backend
 
   backend:
-    image: terra1313/detector:backend-v1
-    container_name: backend
+    image: detect_api
     ports:
-      - "8000:8000"
+      - "8051:8000"
     environment:
-      - FRONTEND_HOST=${DOMAIN_NAME:-frontend}
-      - FRONTEND_PORT=3000
+      - FRONTEND_HOST=${HOST:-localhost}
+      - FRONTEND_PORT=8050
     volumes:
       - ./detect-object-api:/app

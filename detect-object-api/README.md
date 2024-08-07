@@ -11,14 +11,20 @@ we use `Python 3.10+` and others requirements (library) are in a file `requireme
 1. Create and activate a virtual environment (optional but recommended):
 
     ```bash
-    python -m venv venv
+    apt-get update && apt-get install -y mesa-common-dev libgl1-mesa-dev
+    python -m venv venv # or python3 -m venv venv
     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
     ```
 
-2. Install the required packages:
+2. Load Yolo Model:
 
     ```bash
     bash load_model.sh
+    ```
+
+3. Install the required libraries:
+
+    ```bash
     pip install -r requirements.txt
     ```
 

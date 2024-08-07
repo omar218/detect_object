@@ -4,15 +4,15 @@ Detect Object Frontend is a React application built with TypeScript ([Create Rea
 
 ## Requirements
 
-- Node.js
-- yarn
+- Node.js (21.7.3)
+- yarn (1.22.22)
 
 ## Installation
 
-Install the required packages:
+1. Install Node.js and yarn :
 
 ```bash
-yarn add
+yarn install --frozen-lockfile
 ```
 
 ## Usage

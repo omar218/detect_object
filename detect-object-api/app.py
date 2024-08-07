@@ -3,7 +3,6 @@ import numpy as np
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from config import environ
 
 
 class Block(BaseModel):
@@ -18,17 +17,11 @@ class OutputData(BaseModel):
     blocks: list[Block] = [{"x": 0.5, "y": 0.8, "w": 0.9, "h": 1, "label": "car"}]
 
 
-print("http://${}:{}".format(environ["FRONTEND_HOST"], environ["FRONTEND_PORT"]))
-
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost",
-        "http://{}:{}".format(environ["FRONTEND_HOST"], environ["FRONTEND_PORT"]),
-        "https://{}:{}".format(environ["FRONTEND_HOST"], environ["FRONTEND_PORT"]),
-    ],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

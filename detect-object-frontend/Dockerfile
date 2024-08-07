@@ -3,10 +3,12 @@ FROM node:18-alpine AS builder
 ENV NODE_ENV production
 WORKDIR /app
 
+COPY package.json ./
+COPY yarn.lock ./
+
+RUN yarn install --frozen-lockfile
+
 COPY . .
-
-RUN yarn add
-
 RUN yarn build
 
 FROM nginx
