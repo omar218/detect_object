@@ -10,9 +10,9 @@ project aimed at detecting objects in images or videos (CI/CD - DEVSCOP)
 
 ## Requirements
 
-- Python 3.10+
-- Node.js
-- yarn
+- Python (3.10+)
+- Node.js (21.7.3)
+- yarn (1.22.22)
 
 ## Project Structure
 
@@ -33,3 +33,12 @@ detect-object/
         ![Home page image](detect-object-frontend/img/home.png)
     - `Detect page`
         ![page detection](detect-object-frontend/img/detect.png)
+
+## Docker
+
+- build the container of api and frontend parts
+- run
+
+    ```bash
+        HOST=<your ip or hostname> docker compose up -d
+    ```

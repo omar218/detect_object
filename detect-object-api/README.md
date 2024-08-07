@@ -46,7 +46,7 @@ we use `Python 3.10+` and others requirements (library) are in a file `requireme
 2. Run the FastAPI server:
 
     ```bash
-    uvicorn app:app --reload
+    fastapi run
     ```
 
 3. The API will be available at `http://127.0.0.1:8000`, and her documentation at `http://127.0.0.1:8000\docs`.
