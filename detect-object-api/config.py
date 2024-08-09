@@ -5,6 +5,5 @@ from dotenv import load_dotenv
 load_dotenv()
 
 environ = {
-    "FRONTEND_HOST": getenv("FRONTEND_HOST", "127.0.0.1"),
-    "FRONTEND_PORT": getenv("FRONTEND_PORT", "3000"),
+    "LOAD_MODEL_BY_PYTHON": getenv("LOAD_MODEL_BY_PYTHON", "true") == "true",
 }

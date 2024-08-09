@@ -3,6 +3,26 @@ import numpy as np
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import urllib.request
+import os
+from config import environ
+
+# Téléchargement du model
+if environ["LOAD_MODEL_BY_PYTHON"]:
+    if not os.path.exists("src"):
+        os.makedirs("src")
+
+        urllib.request.urlretrieve(
+            "https://opencv-tutorial.readthedocs.io/en/latest/_downloads/10e685aad953495a95c17bfecd1649e5/yolov3.cfg",
+            "src/yolov3.cfg",
+        )
+        urllib.request.urlretrieve(
+            "https://opencv-tutorial.readthedocs.io/en/latest/_downloads/a9fb13cbea0745f3d11da9017d1b8467/coco.names",
+            "src/coco.names",
+        )
+        urllib.request.urlretrieve(
+            "src/https://pjreddie.com/media/files/yolov3.weights", "yolov3.weights"
+        )
 
 
 class Block(BaseModel):
