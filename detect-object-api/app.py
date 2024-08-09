@@ -6,6 +6,7 @@ from pydantic import BaseModel
 import urllib.request
 import os
 from config import environ
+import uvicorn
 
 # Téléchargement du model
 if environ["LOAD_MODEL_BY_PYTHON"]:
@@ -114,3 +115,6 @@ async def detect_objects_block(file: UploadFile = File(...)):
             )
 
     return BOXS
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
