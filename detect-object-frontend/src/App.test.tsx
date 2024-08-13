@@ -7,3 +7,13 @@ test("renders learn react link", () => {
   const el = screen.getByText(/Drag and Drop your image/i);
   expect(el).toBeInTheDocument();
 });
+
+
+test("", () => {
+  render(<App />);
+  const el = screen.getByText(/Drag and Drop/i);
+  expect(el).toBeInTheDocument();
+});
+
+
+

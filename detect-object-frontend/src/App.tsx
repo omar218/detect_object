@@ -59,7 +59,7 @@ function App() {
             <>
               <div className="viewer-detect">
                 <div className="preview-img">
-                  <img src={imgProvidedUrl} className="img" alt="" />
+                  <img src={imgProvidedUrl} className="img" alt="detect-img" />
                   {blocks.map((block, i) => {
                     return <BlockCmp key={`block-${i}`} block={block} />;
                   })}
@@ -68,18 +68,18 @@ function App() {
 
               <div className="group-button">
                 <button
-                  className="btn btn-secondary"
+                  className="btn btn-secondary display-2"
                   disabled={loading}
                   onClick={handleChange}
                 >
                   Change
                 </button>
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-primary display-2"
                   disabled={loading}
                   onClick={handleDetect}
                 >
-                  Detect
+                  Detect-Object
                 </button>
               </div>
             </>

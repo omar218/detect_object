@@ -1,0 +1,57 @@
+name: Integration continue detect-object
+
+on:
+push:
+   branches:
+    -main
+pull_request:
+   branches:
+    -main
+
+jobs:
+frontend-test:
+  runs-on: windows-latest
+  defaults:
+    run:
+      working-directory: frontend
+      steps:
+      -uses:  
+       -name: 
+        uses: action/setup-react-app@v19+
+        with : 
+              node-version: 18
+      -name: 
+         run: yarn add 
+
+    -name: 
+         run: yarn test    
+
+  env:
+      REACT_APP_API_HOST="127.0.0.1"
+      REACT_APP_API_PORT="8000"                  
+     
+#api-test:
+#  services:
+# env:
+
+ # runs-on: windows-latest
+ # defaults:
+ #   run:
+ #   working-directory: detect-objet-api
+ #   steps:
+ #     -uses:  
+ #      -name: 
+ #       uses: action/setup-python3
+ #       with : 
+ #             fastapi-version: 21
+ #     -name: 
+ #       run: fastapi run test 
+
+ #   -name: 
+ #        run: py test 
+
+
+#build-images
+#services
+#Integration test
+
